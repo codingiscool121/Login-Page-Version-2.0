@@ -20,7 +20,8 @@ function signUp(){
 
     const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
     promise.catch(e => alert(e.message));
-    alert("You have successfully signed up.")
+    var email = user.email;
+    alert("You have successfully signed up," + email)
 }
 
 function signIn(){
@@ -29,6 +30,7 @@ function signIn(){
 
     const promise = auth.signInWithEmailAndPassword(email.value, password.value);
     promise.catch(e => alert(e.message));
+    var email = user.email;
     alert("You have successfully signed in," + email);
 
     //Take user to different or home page
@@ -36,10 +38,10 @@ function signIn(){
 }
 
 
-function signOut(){
-    auth.signOut();
-    alert("You have successfully signed out.")
-}
+// function signOut(){
+//     auth.signOut();
+//     alert("You have successfully signed out.")
+// }
 
 
 auth.onAuthStateChanged(function(user){
@@ -49,7 +51,7 @@ auth.onAuthStateChanged(function(user){
   alert(" Active user: "+email);
 
  }else{
-     alert("No Active User")
+     alert("Please sign in.")
     //no user is signed in 
  }
 })
